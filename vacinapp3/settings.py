@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     #Apps de terceiros
     'crispy_forms',
     'crispy_bootstrap4',
+    'localflavor',
 
     #Meus apps
     'vacina',
-    'accounts'
+    'accounts',
+    'clientes',
 ]
 
 MIDDLEWARE = [

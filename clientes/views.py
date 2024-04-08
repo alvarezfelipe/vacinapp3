@@ -13,9 +13,13 @@ def criar_crianca(request):
     if str(request.method) == "POST":
         if form.is_valid():
             crianca = form.save()
-            messages.success(request, 'Criança cadastrada com sucesso')
-            # return redirect('visualizar_crianca', crianca.pk)
-            # return render(request, 'crianca/visualizar_crianca.html', {'crianca': form.cleaned_data})
+            messages.success(request, 'Criança cadastrada com sucesso')            
+            return redirect('hello')            
+            # return redirect('crianca/visualizar_crianca/',crianca.id)          
+            # return redirect(visualizar_crianca(request, crianca.id))          
+            # return redirect("visualizar_crianca", id = crianca.id)          
+        else:
+            messages.error(request, 'Erro ao cadastrar. Contate o administrador.')
     return render(request, 'crianca/cadastrar_crianca.html', {'form':form})
 
 def listar_crianca(request):
@@ -57,3 +61,6 @@ def visualizar_crianca(request, id):
         'crianca': crianca
     }
     return render(request, 'crianca/visualizar_crianca.html', context)
+
+def teste(request):
+    return render(request, 'crianca/hello.html')

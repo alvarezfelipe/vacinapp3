@@ -13,11 +13,8 @@ def criar_crianca(request):
     if str(request.method) == "POST":
         if form.is_valid():
             crianca = form.save()
-            messages.success(request, 'Criança cadastrada com sucesso')            
-            return redirect('hello')            
-            # return redirect('crianca/visualizar_crianca/',crianca.id)          
-            # return redirect(visualizar_crianca(request, crianca.id))          
-            # return redirect("visualizar_crianca", id = crianca.id)          
+            return redirect('/crianca/visualizar_crianca/' + str(crianca.id))          
+        
         else:
             messages.error(request, 'Erro ao cadastrar. Contate o administrador.')
     return render(request, 'crianca/cadastrar_crianca.html', {'form':form})

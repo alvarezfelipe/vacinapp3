@@ -6,7 +6,7 @@
 {% block main %}
     <div>
         <p> Cadastrar Criança </p>
-        <form method="POST" action=".">
+        <form method="POST" action="cadastrar_crianca">
             {% csrf_token %}
             {%crispy form%}
         </form>

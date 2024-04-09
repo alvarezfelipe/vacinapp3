@@ -20,7 +20,7 @@ class CadastroCriancaForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'POST'
-        self.helper.form_action = '.'
+        self.helper.form_action = 'visualizar_crianca'
         self.helper.add_input(
             Submit(
                 "submit",

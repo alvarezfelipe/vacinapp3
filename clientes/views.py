@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from .forms import *
 from .models import *
 
-# Create your views here.
+# Views para crianças
 def criar_crianca(request):
     model = Crianca
     form = CadastroCriancaForm(request.POST or None)
@@ -61,3 +61,57 @@ def visualizar_crianca(request, id):
 
 def teste(request):
     return render(request, 'crianca/hello.html')
+
+# Views para pais/responsáveis
+def criar_resp(request):
+    model = Pais
+    form = CadastroPaiForm(request.POST or None)
+
+    if str(request.method) == "POST":
+        if form.is_valid():
+            pai = form.save()
+            return redirect('/responsavel/visualizar_resp/' + str(pai.id))          
+        
+        else:
+            messages.error(request, 'Erro ao cadastrar. Contate o administrador.')
+    return render(request, 'responsavel/cadastrar_resp.html', {'form':form})
+
+def listar_resp(request):
+    busca = request.GET.get('busca')
+    if busca:
+        pais_list = Pais.objects.filter(
+            pai_nome__icontains=busca).order_by('pai_nome')
+    else:
+        pais_list = Pais.objects.all().order_by('pai_nome')
+    paginacao = Paginator(pais_list, 10)
+    pagina = request.GET.get('page')
+    pais = paginacao.get_page(pagina)
+    context = {
+        'pais':pais
+    }
+    return render(request, 'responsavel/listar_resp.html', context)
+
+def editar_resp(request, id):
+    pai = get_object_or_404(Pais, pk = id)
+    form = CadastroPaiForm(request.POST or None, instance=pai)
+
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Responsável atualizado com sucesso!')
+            return render(request, 'responsavel/visualizar_resp.html', {'pais':pai})
+        else:
+            messages.error(request, 'Erro ao editar. Tente novamente.')
+    
+    context = {
+        'form':form,
+        'pais':pai,
+    }
+    return render(request, 'responsavel/editar_resp.html', context)
+
+def visualizar_resp(request, id):
+    pai = get_object_or_404(Pais, pk=id)
+    context = {
+        'pais': pai
+    }
+    return render(request, 'responsavel/visualizar_resp.html', context)

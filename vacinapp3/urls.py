@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('vacina/', include('vacina.urls')),
     path('crianca/', include('clientes.urls')),
+    path('responsavel/', include('clientes.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),    
     # path('', TemplateView.as_view(template_name="vacina/listar_vacinas.html"), name="listar_vacinas"),

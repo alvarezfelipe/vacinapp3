@@ -4,7 +4,7 @@ from localflavor.br.models import BRCPFField, BRPostalCodeField, BRStateField
 # Create your models here.
 class Pais(models.Model):
     pai_nome = models.CharField("Nome Completo", max_length=250)
-    pai_rg = models.CharField
+    pai_rg = models.CharField("RG", max_length=250)
     pai_cpf = BRCPFField('CPF')
     pai_celular = models.CharField('Celular', max_length=15)
     pai_cep = BRPostalCodeField('CEP')

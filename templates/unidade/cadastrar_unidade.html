@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+{% block main %}
+    <div>
+        <p> Cadastrar Unidade de Saúde </p>
+        <form method="POST" action="cadastrar_unidade">
+            {% csrf_token %}
+            {%crispy form%}
+        </form>
+    </div>  
+{% endblock main %}

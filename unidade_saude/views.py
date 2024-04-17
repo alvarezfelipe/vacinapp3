@@ -15,7 +15,7 @@ def criar_unidade(request):
             unidade_saude = form.save()
             return redirect('/unidade/visualizar_unidade/' + str(unidade_saude.id))
         else:
-            messages.error('Erro ao cadastrar. Contate o administrador.')
+            messages.error(request, 'Erro ao cadastrar. Contate o administrador.')
     return render(request, 'unidade/cadastrar_unidade.html', {'form':form})
 
 def listar_unidade(request):

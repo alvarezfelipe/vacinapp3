@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+<!DOCTYPE HTML>
+{% block main %}
+<div>
+    <p>Cadastrar Responsável</p>
+
+    <form action="cadastrar_resp" method="post">
+
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+</div>
+{% endblock main %}

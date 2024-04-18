@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'accounts',
     'clientes',
     'unidade_saude',
+    'vacinacao',
 ]
 
 MIDDLEWARE = [

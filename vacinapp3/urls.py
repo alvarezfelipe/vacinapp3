@@ -21,6 +21,7 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vacina/', include('vacina.urls')),
+    path('vacinacao/', include('vacinacao.urls')),
     path('crianca/', include('clientes.urls')),
     path('responsavel/', include('clientes.urls')),
     path('unidade/', include('unidade_saude.urls')),

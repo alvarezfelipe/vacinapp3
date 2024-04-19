@@ -12,7 +12,7 @@ def criar_vacinacao(request):
     if str(request.method) == 'POST':
         if form.is_valid():
             vacinacao = form.save()
-            return redirect('/vacinacao/visualizar_vacinacao' + str(vacinacao.id))
+            return redirect('/vacinacao/visualizar_vacinacao/' + str(vacinacao.id))
     return render(request, 'vacinacao/cadastrar_vacinacao.html', {'form':form})
 
 def listar_vacinacao(request):

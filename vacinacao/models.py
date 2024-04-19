@@ -16,7 +16,7 @@ class CadastroVacinal(models.Model):
     paciente = models.ForeignKey(Crianca, on_delete=models.CASCADE)
     unidade_saude = models.ForeignKey(UnidadeSaude, on_delete=models.CASCADE)
     data_aplicacao = models.DateField('Data da aplicação')
-    status = models.CharField('Status', choices=status_vacinacao)
+    status = models.CharField('Status', choices=status_vacinacao, max_length=250)
 
     class Meta:
         db_table = 'vacinacao'

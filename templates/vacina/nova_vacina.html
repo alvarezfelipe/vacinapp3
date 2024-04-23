@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+{% block main %}
+    <div>
+        <p> Cadastrar Vacina </p>
+        <form method="POST" action="nova_vacina">
+            {% csrf_token %}
+            {%crispy form%}
+    
+        </form>
+    </div>  
+{% endblock main %}

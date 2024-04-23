@@ -15,11 +15,12 @@ class CalendarioVacina(models.Model):
         ('2ª dose', '2ª dose'), 
         ('3ª dose', '3ª dose'), 
         ('4ª dose', '4ª dose'), 
+        ('5ª dose', '5ª dose'), 
         ('6ª dose', '6ª dose'), 
         ('dose unica', 'dose unica'), 
         ('reforço', 'reforço'), 
     ]
 
-    calendario_vacina = models.ForeignKey(Vacina, on_delete=models.CASCADE)
+    calendario_vacina = models.ForeignKey(Vacina, on_delete=models.CASCADE, verbose_name='Vacina')
     calendario_dose = models.CharField('Dose', max_length=20, choices=dose_choices)
-    calendario_idade = models.CharField('Idade', max_length=20)
+    calendario_idade = models.CharField('Idade em dias', max_length=20)

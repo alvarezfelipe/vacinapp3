@@ -17,9 +17,6 @@ def criar_vacina(request):
             return redirect('hello')
     return render(request, 'vacina/vacinahome.html', {'form':form})
 
-def teste(request):
-    return render(request, 'vacina/hello.html')
-
 def listar_vacinas(request):
     busca = request.GET.get('busca')
     if busca:
@@ -57,3 +54,18 @@ def visualizar_vacina(request, id):
         'vacina': vacina
     }
     return render(request, 'vacina/visualizar_vacina.html', context)
+
+#Views para novas vacinas no calendário
+def add_vacina_calendario(request):
+    model = CalendarioVacina
+    form = CalendarioVacinaForm(request.POST or None)
+
+    if str(request.method) == "POST":
+        if form.is_valid():
+            vacina = form.save()
+            messages.success(request, 'Vacina cadastrada com sucesso')
+            return redirect('/vacina/calendario/')
+    return render(request, 'vacina/nova_vacina.html', {'form':form})
+
+def ver_calendario(request):
+    return render(request, 'vacina/calendario.html')

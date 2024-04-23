@@ -49,3 +49,50 @@ class VacinaForm(forms.ModelForm):
                 css_class= "border-bottom mb-3"
             )
         )
+
+#Form para adicionar vacinas ao calendário
+class CalendarioVacinaForm(forms.ModelForm):
+    class Meta:
+        model = CalendarioVacina
+        fields = [
+            'calendario_vacina',
+            'calendario_dose',
+            'calendario_idade',
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.form_action = 'nova_vacina'
+        self.helper.add_input(
+            Submit(
+                "submit",
+                "Salvar",
+                css_class="btn btn-dark"
+            )
+        )
+
+        self.helper.add_input(
+            Button(
+                "voltar",
+                "Voltar",
+                css_class= "btn btn-outline-dark",
+                onclick = "javascript:history.back()",
+            )
+        )
+
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                Div(
+                    Field("calendario_vacina", wrapper_class="col"),
+                    Field("calendario_dose", wrapper_class="col"),
+                    Field("calendario_idade", wrapper_class="col"),
+
+                    css_class= "row",
+                ),
+
+                css_class= "border-bottom mb-3"
+            )
+        )

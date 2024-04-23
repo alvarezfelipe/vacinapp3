@@ -10,6 +10,8 @@ class VacinacaoForm(forms.ModelForm):
         model = CadastroVacinal
         fields = [
             'vacina',
+            'lote',
+            'fabricante',
             'paciente',
             'unidade_saude',
             'data_aplicacao',
@@ -45,6 +47,8 @@ class VacinacaoForm(forms.ModelForm):
 
                 Div(
                     Field("vacina", wrapper_class="col"),
+                    Field("lote", wrapper_class="col"),
+                    Field("fabricante", wrapper_class="col"),
                     Field("unidade_saude", wrapper_class="col"),
                     Field("data_aplicacao", wrapper_class="col"),
                     Field("status", wrapper_class="col"),                    

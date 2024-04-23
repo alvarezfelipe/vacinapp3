@@ -13,6 +13,8 @@ class CadastroVacinal(models.Model):
     ]
 
     vacina = models.ForeignKey(Vacina, on_delete=models.CASCADE)
+    lote = models.CharField('Lote', max_length=250, blank=True)
+    fabricante = models.CharField('Fabricante', max_length=250, blank=True)
     paciente = models.ForeignKey(Crianca, on_delete=models.CASCADE)
     unidade_saude = models.ForeignKey(UnidadeSaude, on_delete=models.CASCADE)
     data_aplicacao = models.DateField('Data da aplicação')

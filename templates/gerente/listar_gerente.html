@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base-gerente.html" %}
 
 {% block title %}Lista de Gerentes{% endblock title %}
 
@@ -25,9 +25,11 @@
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">ID</th>
-				<th scope="col">Vacina</th>
-				<th scope="col">Lote</th>
-				<th scope="col">Fabricante</th>				
+				<th scope="col">Nome</th>
+				<th scope="col">Matrícula</th>
+				<th scope="col">CPF</th>				
+				<th scope="col">Celular</th>				
+				<th scope="col">E-mail</th>				
 				<th scope="col">Ações</th>				
 			</tr>
 		</thead>
@@ -37,8 +39,10 @@
 			<tr>
 				<td>{{ gerente.id }} </th>
 				<td>{{ gerente.gerente_nome }} </th>
-				<td>{{ gerente.gerente_nome }} </td>
-				<td>{{ gerente.gerente_nome }} </td>
+				<td>{{ gerente.gerente_matricula }} </td>
+				<td>{{ gerente.gerente_cpf }} </td>
+				<td>{{ gerente.gerente_celular }} </td>
+				<td>{{ gerente.gerente_email }} </td>
 				<td>					
 					<a href=" {% url "visualizar_gerente" gerente.pk %}" class="btn btn-outline-primary mt-1" > <i class="far fa-eye"></i> Visualizar </a>
 					<a href="{% url "editar_gerente" gerente.id %} " class="btn btn-outline-success mt-1"> <i class="fas fa-user-edit"></i> Editar </a>					

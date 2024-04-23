@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base-pai.html" %}
 
 {% block title %}Lista de Crianças{% endblock title %}
 
@@ -10,7 +10,7 @@
 			<form>
 				<div class="input-group">
 					<input type="text" class="form-control form-control-lg" name="busca" id="busca" type="text"
-						placeholder="Buscar vacina..." value="{{ request.GET.busca }}">
+						placeholder="Buscar Criança..." value="{{ request.GET.busca }}">
 					<div class="input-group-append">
 						<button class="btn btn-dark" type="submit"><i class="fas fa-search"></i> Buscar</button>
 					</div>
@@ -25,9 +25,9 @@
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">ID</th>
-				<th scope="col">Vacina</th>
-				<th scope="col">Lote</th>
-				<th scope="col">Fabricante</th>				
+				<th scope="col">Nome</th>
+				<th scope="col">Data Nascimento</th>
+				<th scope="col">RG</th>				
 				<th scope="col">Ações</th>				
 			</tr>
 		</thead>
@@ -37,8 +37,8 @@
 			<tr>
 				<td>{{ crianca.id }} </th>
 				<td>{{ crianca.crianca_nome }} </th>
-				<td>{{ crianca.crianca_nome }} </td>
-				<td>{{ crianca.crianca_nome }} </td>
+				<td>{{ crianca.crianca_nascimento }} </td>
+				<td>{{ crianca.crianca_rg }} </td>
 				<td>					
 					<a href=" {% url "visualizar_crianca" crianca.pk %}" class="btn btn-outline-primary mt-1" > <i class="far fa-eye"></i> Visualizar </a>
 					<a href="{% url "editar_crianca" crianca.id %} " class="btn btn-outline-success mt-1"> <i class="fas fa-user-edit"></i> Editar </a>					

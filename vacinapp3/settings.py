@@ -144,4 +144,5 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 #Login / Logout
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = "/accounts/login/"
